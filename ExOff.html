@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Disabler</title>
+    <script>
+        function disableExtension() {
+            var extensionId = document.getElementById("extensionId").value;
+            if (confirm("Are you sure you want to disable this extension? Data may be lost.")) {
+                chrome.runtime.sendMessage(extensionId, {enabled: false});
+                alert("Extension disabled successfully!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Extension Disabler</h1>
+    <label for="extensionId">Enter Extension ID:</label>
+    <input type="text" id="extensionId" placeholder="Extension ID">
+    <button onclick="disableExtension()">Disable Extension</button>
+</body>
+</html>
